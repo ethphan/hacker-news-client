@@ -22,6 +22,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-start",
     marginBottom: "8px",
   },
+  newsCount: {
+    marginRight: "15px"
+  },
+  newsTitle: {
+    marginBottom: "6px",
+  },
+  newsDescription: {
+    color: "grey",
+  },
 }));
 
 const News = (props) => {
@@ -57,10 +66,10 @@ const News = (props) => {
               const { id, title, time_ago, user, comments_count, points } = el;
               return (
                 <div key={id} className={classes.newsDetail}>
-                  <h3 style={{ marginRight: "15px" }}>{index + 1 + (page - 1) * 30} </h3>
+                  <h3 className={classes.newsCount}>{index + 1 + (page - 1) * 30} </h3>
                   <div>
-                    <p style={{ marginBottom: "6px" }}>{title}</p>
-                    <small style={{ color: "grey" }}>
+                    <p className={classes.newsTitle}>{title}</p>
+                    <small className={classes.newsDescription}>
                       {points} by {user} {time_ago} | {comments_count} comments
                     </small>
                   </div>
