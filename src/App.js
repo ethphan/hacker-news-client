@@ -1,4 +1,3 @@
-import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import News from "./Components/News";
 import Header from "./Components/Header";

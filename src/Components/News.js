@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getNews } from "../store/action/newsAction";
-import { Button, Paper, Switch, FormControlLabel, makeStyles } from "@material-ui/core";
+import { Button, Paper, Switch, FormControlLabel, makeStyles, CircularProgress } from "@material-ui/core";
 import { withTheme } from "./Theme";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const News = (props) => {
   const [page, setPage] = useState(1);
-  const { newsData, getNews, darkMode, setDarkMode } = props;
+  const { newsData, getNews, darkMode, setDarkMode, loading } = props;
   const classes = useStyles();
 
   useEffect(() => {
@@ -68,6 +68,7 @@ const News = (props) => {
               );
             })
           : null}
+        {loading ? <CircularProgress /> : null}
       </Paper>
     </div>
   );
@@ -76,6 +77,7 @@ const News = (props) => {
 const mapStateToProps = (state) => {
   return {
     newsData: state.newsReducer.newsData,
+    loading: state.newsReducer.loading,
   };
 };
 
